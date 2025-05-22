@@ -8,12 +8,16 @@
 
 by **[Amanda Agambire](https://www.linkedin.com/in/amanda-agambire/)**
 
-Sep 2022
+Aug 2024
 
 ## Project Description
-Farmers who grow potatoes are facing drastic economic losses every year due to the various disease that can happen to a potato plant. There are two common diseases, which are known as **Early Blight**, **Late Blight**. Early blight is caused by a fungus and late blight is caused by a specific microorganism. If a farmer can detect the cause of the disease in an early stage and apply appropriate treatment, it can save waste and prevent economic loss tremendously.
+With the rise of smart security systems and wearable technology, authenticating users based on their natural behavior has become a promising frontier. One such behavioral biometric is gait—the unique way a person walks. However, most gait-based systems remain vulnerable to spoofing attacks and privacy breaches.
 
-AtliQ Agriculture is an AI company that focus on solving problems in agriculture domain. The company has takne this project and decided to build a mobile application which they can give it to farmers. For farmers, all they need to do is to take a photo of the plant and the mobile application will tell them whether the plans is healthy or it has one of the diseases.
+GaitGuard is an  AI system I developed to test & address these issues by enabling secure and privacy-preserving gait authentication. The system uses time-series data from accelerometers and gyroscopes—typically from smartphones or wearable devices—to learn and identify each user's walking signature. By leveraging a combination of CNN+LSTM deep learning, TSFRESH-based time-series feature extraction, differential privacy techniques, and adversarial robustness defenses, GaitGuard ensures secure login access even in the face of sophisticated spoofing attempts.
+
+Ideally, the final application can be integrated into smart home systems, surveillance networks, or wearable apps—providing seamless and secure biometric authentication without sacrificing user privacy.
+
+
 
 
 
