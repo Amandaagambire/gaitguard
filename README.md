@@ -121,12 +121,5 @@ This research supports the ethical deployment of gait biometrics in:
 
 ---
 
-## Contact
-
-Reach out or collaborate:  
-📧 amanda.agambire@gmail.com  
-🔗 [LinkedIn](https://www.linkedin.com/in/amanda-agambire/)  
-🔗 [GitHub](https://github.com/Amandaagambire)
-
 
 
