@@ -8,79 +8,125 @@
 
 by **[Amanda Agambire](https://www.linkedin.com/in/amanda-agambire/)**
 
-Aug 2024
+*August 2024*
+
+
+---
 
 ## Project Description
-With the rise of smart security systems and wearable technology, authenticating users based on their natural behavior has become a promising frontier. One such behavioral biometric is gait—the unique way a person walks. However, most gait-based systems remain vulnerable to spoofing attacks and privacy breaches.
 
-GaitGuard is an  AI system I developed to test & address these issues by enabling secure and privacy-preserving gait authentication. The system uses time-series data from accelerometers and gyroscopes—typically from smartphones or wearable devices—to learn and identify each user's walking signature. By leveraging a combination of CNN+LSTM deep learning, TSFRESH-based time-series feature extraction, differential privacy techniques, and adversarial robustness defenses, GaitGuard ensures secure login access even in the face of sophisticated spoofing attempts.
+**Can you trust gait as a biometric?**
 
-Ideally, the final application can be integrated into smart home systems, surveillance networks, or wearable apps—providing seamless and secure biometric authentication without sacrificing user privacy.
+This research explores that question by testing whether walking patterns (gait) captured from accelerometer data can serve as **unique, spoof-resistant, and privacy-preserving biometric identifiers**.
+
+Unlike facial recognition or fingerprints, gait is harder to replicate and can be captured passively via wearable devices or smartphones. However, gait-based authentication remains underexplored in terms of **trustworthiness**, especially under adversarial conditions or in privacy-sensitive scenarios.
+
+> **Goal**: To rigorously evaluate the **uniqueness**, **spoof resistance**, and **privacy viability** of gait biometrics using ML pipelines, time-series analysis, and adversarial robustness tests.
+
+---
+
+## 📌 Research Objectives
+
+### Gait Uniqueness Across Individuals
+- Demonstrate high accuracy in distinguishing users solely using time-series gait data.
+- Use both classical (TSFRESH + ML) and deep learning (CNN+LSTM) pipelines.
+
+### Spoofing Resistance
+- Simulate adversarial attacks (e.g., FGSM, PGD) to mimic another user's gait.
+- Assess how the model withstands these attacks without degrading performance.
+
+### Fusion Theme: *Privacy + Inclusivity*
+- Propose gait biometrics as a secure, **non-invasive**, **inclusive** form of authentication.
+- Align with ethical AI goals for *transparent*, *passive*, and *user-friendly* security systems.
+
+---
+
+## Methodology
+
+### Data Collection
+
+- Aggregated datasets from multiple users wearing accelerometer-based sensors.
+- Focused on a curated subset of 29 users with consistent format and sampling rate.
+- Performed data segmentation using **sliding windows**.
+
+### Time-Series Feature Extraction
+
+- Used `TSFRESH` to extract over 2,000 statistical, temporal, and frequency features.
+- Applied supervised feature selection based on user identity labels.
+
+### Modeling Pipelines
+
+- **TSFRESH + Decision Tree**: Baseline model using selected features.
+- **CNN + LSTM**: Deep learning model on raw segmented sequences.
+- Accuracy and f1-scores evaluated per user.
+
+### Adversarial Robustness Testing
+
+- Implemented **FGSM** (Fast Gradient Sign Method) and **PGD** attacks.
+- Compared clean model accuracy vs. adversarial accuracy.
+- Demonstrated **100% robustness** in proof-of-concept setup.
+
+---
+
+## Results (so far)
+
+| Metric                  | Value     |
+|-------------------------|-----------|
+| Clean Accuracy (DT)     | 83–100%   |
+| Deep Learning Accuracy  | 100%      |
+| FGSM Adversarial Accuracy | 100%    |
+| Selected TSFRESH Features | 127     |
+| Users Tested (PoC)      | 6         |
+
+---
+
+## Tech Stack
+
+- Python, Pandas, NumPy
+- Matplotlib, Seaborn
+- TSFRESH (for feature engineering)
+- TensorFlow & Keras (for deep learning)
+- Sklearn (for classical modeling)
+- FGSM & PGD (adversarial robustness)
+
+---
+
+## Key Insights
+
+- Gait is **distinct enough** to authenticate individuals in short time windows.
+- Even simple decision trees on TSFRESH features can classify users with high precision.
+- Spoofing via adversarial attacks can be **mitigated** with robust architectures.
+- Gait-based authentication promotes **privacy**, **passivity**, and **accessibility** over visual biometrics.
+
+---
+
+## Societal Impact
+
+> In a world grappling with surveillance overreach, identity theft, and exclusionary biometric systems, **gait** offers a future-forward path for **privacy-first, inclusive security**.
+
+This research supports the ethical deployment of gait biometrics in:
+- Smart homes and IoT environments
+- Public access control and surveillance
+- Wearables and healthcare authentication systems
+
+---
+
+## Next Steps
+
+- Expand to full dataset (29+ users)
+- Integrate **differential privacy** in training
+- Simulate real-world spoof scenarios
+- Compare against other biometrics (e.g., keystroke, voice)
+- Publish results in an academic conference
+
+---
+
+## Contact
+
+Reach out or collaborate:  
+📧 amanda.agambire@gmail.com  
+🔗 [LinkedIn](https://www.linkedin.com/in/amanda-agambire/)  
+🔗 [GitHub](https://github.com/Amandaagambire)
 
 
 
-
-
-https://user-images.githubusercontent.com/105242871/188296043-cff403bd-83a1-41c5-b604-1d307a223e5a.mov
-
-
-
-## Project Goal
-Our goal is to buld the model that supports the "behind the scene" of the mobile application, which uses **deep learning** and **conbolutional neural network**.
-
-![early_and_late](https://user-images.githubusercontent.com/105242871/188295263-761359b7-497f-4563-8df5-a2360e2c8bf0.jpeg)
-
-## Process
-#### :one:   Data Acquisition
-
-
-A team of annotators who work closely with the farmers to collect the images from the fields and annotate the image either it's a healhy potato leaf or if it has any diseases using domain knowledge. The team collected 2152 potato-leaf images in total.
-
-#### :two:   Data Preparation
-
-- **tf dataset**
-
-- **Resize & Scale**
-
-- **Data augmentation**
-
-<details>
-<summary> Data Splitting </summary>
-
-- Create function `get_dataset_partitions_tf()` to split data into **train, validate, test**
-
-- Test prepare function
-
-- Check the size of each dataset
-     ```sh
-     len(train), len(validate), len(test)
-     ```
-- Call the function, and cache e the 3 data samples
-     ```sh
-    train = train.cache().shuffle(1000).prefetch(buffer_size = tf.data.AUTOTUNE)
-    validate = validate.cache().shuffle(1000).prefetch(buffer_size = tf.data.AUTOTUNE)
-    test = test.cache().shuffle(1000).prefetch(buffer_size = tf.data.AUTOTUNE)
-     ```
-</details>
-
-#### :three:    Modeling
-- Define neural network architecture
-
-- Build model on training dataset and evaluate on train and validate
-
-- Use optimizer to compile
-
-- Fit model on test dataset on evaluate model based on accuracy
-
-- Plot accuracy and loss function of train and validate datasets from all 50 epochs.
-
-- Make prediction on test dataset and save model
-
-- Ajdust neural network architecture and optimizer, using steps above to generate and save new mdoel
-
-- Deploy the top performing model
-
-## Conclusion
-The neurol network model has an accuracy of 99% on test dataset, and it's expected to perform with the equivalent accuracy level on future onseen data.
-
-<img width="883" alt="predictions" src="https://user-images.githubusercontent.com/105242871/188297747-98a86bb0-2296-4136-9048-698f71e47d72.png">
