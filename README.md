@@ -1,4 +1,4 @@
-# GaitGuard
+# Gait Biometrics Reseach : Gait-Guard
 <a href="#"><img alt="Python" src="https://img.shields.io/badge/Python-00543D.svg?logo=python&logoColor=white"></a>
 <a href="#"><img alt="Pandas" src="https://img.shields.io/badge/Pandas-006750.svg?logo=pandas&logoColor=white"></a>
 <a href="#"><img alt="NumPy" src="https://img.shields.io/badge/Numpy-008B76.svg?logo=numpy&logoColor=white"></a>
